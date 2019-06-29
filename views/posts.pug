@@ -2,21 +2,21 @@ doctype html
 html(lang="jp")
   head
     meta(charset="UTF-8")
-    title 秘密の匿名掲示板
+    title SECRET BOARD
   body
-    h1 秘密の匿名掲示板
-    a(href="/logout") ログアウト
-    h2 新規投稿
+    h1 SECRET BOARD
+    a(href="/logout") Logout
+    h2 POST
     form(method="post", action="/posts")
       div
         textarea(name="content", cols=40, rows=4)
       div
-        button(type="submit") 投稿
-    h2 投稿一覧
+        button(type="submit") SEND!
+    h2 INDEX
     each post in posts
       - var isPostedByAdmin = (post.postedBy === 'admin')
       if isPostedByAdmin
-        h3 #{post.id} : 管理人 ★
+        h3 #{post.id} : ADMIN★
       else
         h3 #{post.id} : ID:#{post.trackingCookie}
       p #{post.content}
@@ -28,5 +28,5 @@ html(lang="jp")
       if isDeletable
         form(method="post", action="/posts?delete=1")
           input(type="hidden", name="id", value= `${post.id}`)
-          button(type="submit") 削除
+          button(type="submit") DEL
       hr
