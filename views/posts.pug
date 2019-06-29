@@ -31,7 +31,7 @@ html(lang="jp")
         div.card-body
           p.card-text!=post.content
         div.card-footer
-          div at: #{post.createdAt}
+          div at: #{post.formattedCreatedAt}
           - var isAdmin = (user === 'admin')
           if isAdmin
             div by: #{post.postedBy}
